@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Route } from 'react-router-dom';
 import { ApolloConsumer } from 'react-apollo';
 
 import Container from 'react-bootstrap/Container';
@@ -12,8 +12,9 @@ import Issues from '../../components/issues/issues.component';
 import { queries } from '../../graphql/queries';
 
 import { IssuesPageContainer } from './issues.styles';
+import IssueDetailPage from '../issue-detail/issue-detail.page';
 
-const IssuesPage = () => {
+const IssuesPage = ({ match }) => {
     return (
         <ApolloConsumer>
             {
@@ -27,7 +28,17 @@ const IssuesPage = () => {
                             <Container>
                                 <Row>
                                     <Col>
-                                        <Issues token={data.accessToken} />
+                                        <Route
+                                            exact
+                                            path={`${match.path}`}
+                                        >
+                                            <Issues token={data.accessToken} />
+                                        </Route>
+                                        <Route
+                                            path={`${match.path}/:id`}
+                                        >
+                                            <IssueDetailPage token={data.accessToken} />
+                                        </Route>
                                     </Col>
                                 </Row>
                             </Container>
