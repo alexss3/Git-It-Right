@@ -16,6 +16,7 @@ import { persistCache } from 'apollo-cache-persist';
 import { typeDefs, resolvers } from './graphql/resolvers';
 import { queries } from './graphql/queries';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 class App extends React.Component {
