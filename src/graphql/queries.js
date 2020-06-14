@@ -28,21 +28,21 @@ const GET_USER_ISSUES = gql`
     }
 
     fragment IssueDetails on IssueEdge {
-    node {  
-        id
-        title
-        bodyHTML
-        closed
-        number
-        createdAt
-        author {
-            login
+        node {  
+            id
+            title
+            bodyHTML
+            closed
+            number
+            createdAt
+            author {
+                login
+            }
+            repository {
+            nameWithOwner
+            url
+            }
         }
-        repository {
-        nameWithOwner
-        url
-        }
-    }
     }
 `;
 

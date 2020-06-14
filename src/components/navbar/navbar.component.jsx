@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mutation } from 'react-apollo';
-import { withRouter, Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -10,7 +10,10 @@ import { mutations } from '../../graphql/queries';
 
 import { StyledNavbar } from './navbar.styles';
 
-const NavbarContainer = ({ user, history, client }) => {
+const NavbarContainer = ({ user, client }) => {
+
+    let history = useHistory();
+
     return (
         <React.Fragment>
             <StyledNavbar>
@@ -60,4 +63,4 @@ const NavbarContainer = ({ user, history, client }) => {
     )
 }
 
-export default withRouter(NavbarContainer);
+export default NavbarContainer;

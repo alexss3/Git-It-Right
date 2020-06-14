@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mutation } from 'react-apollo';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -13,7 +13,9 @@ import Comment from '../comment/comment.component';
 import { IssueDetailContainer } from './issue-details.styles';
 
 
-const IssueDetails = ({ issue, token, history }) => {
+const IssueDetails = ({ issue, token }) => {
+
+    let history = useHistory();
 
     const firstComment = {
         author: issue.author,
@@ -95,4 +97,4 @@ const IssueDetails = ({ issue, token, history }) => {
 
 }
 
-export default withRouter(IssueDetails);
+export default IssueDetails;

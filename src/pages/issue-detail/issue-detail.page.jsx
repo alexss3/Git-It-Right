@@ -1,21 +1,23 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Query } from 'react-apollo';
 
 import { queries } from '../../graphql/queries';
 
 import IssueDetails from '../../components/issue-details/issue-details.component';
 
-const IssueDetailPage = ({ match, token }) => {
+const IssueDetailPage = ({ token }) => {
 
-    const poll = process.env.REACT_APP_POLL_INTERVAL;
+    const poll = 10000;
+
+    const { id } = useParams();
 
     return (
         <div>
             <Query 
                 query={queries.GET_ISSUE_DETAIL} 
                 variables={{
-                    id: match.params.id 
+                    id
                 }}
                 context={{
                     headers: {
@@ -28,7 +30,7 @@ const IssueDetailPage = ({ match, token }) => {
             {
                 ({loading, error, data}) => {
                     if (loading) return 'Loading...';
-                    if (error) return `Error: ${error.message}`;
+                    if (error) return error.message;
                     
                     const issue = data.node;
                     return (
@@ -41,4 +43,4 @@ const IssueDetailPage = ({ match, token }) => {
     )
 };
 
-export default withRouter(IssueDetailPage);
+export default IssueDetailPage;

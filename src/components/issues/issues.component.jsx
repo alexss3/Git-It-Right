@@ -9,7 +9,7 @@ import { queries } from '../../graphql/queries';
 
 const Issues = ({ token }) => {
 
-    const poll = process.env.REACT_APP_POLL_INTERVAL;
+    const poll = 10000;
 
     return (
         <IssuesContainer>
@@ -26,8 +26,8 @@ const Issues = ({ token }) => {
             >
             {
                 ({loading, error, data}) => {
-                    if(loading) return <li>Loading...</li>;
-                    if(error) return `Error: ${error.message}`;
+                    if(loading) return 'Loading...';
+                    if(error) return error.message;
 
                     return (
                         <IssueList issues={data} />

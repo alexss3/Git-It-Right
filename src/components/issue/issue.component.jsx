@@ -1,10 +1,12 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { useRouteMatch, useHistory } from 'react-router-dom';
 
 import { IssueContainer } from './issue.styles';
 
+const Issue = ({ issue }) => {
 
-const Issue = ({ issue, history, match }) => {
+    const { path } = useRouteMatch();
+    let history = useHistory();
 
     return (
         <IssueContainer>
@@ -18,7 +20,7 @@ const Issue = ({ issue, history, match }) => {
                 {issue.node.repository.nameWithOwner}
                 </a> 
                 <span 
-                    onClick={() => history.push(`${match.path}/${issue.node.id}`)} 
+                    onClick={() => history.push(`${path}/${issue.node.id}`)} 
                     className="issue-link"
                 >
                 {issue.node.title}
@@ -29,4 +31,4 @@ const Issue = ({ issue, history, match }) => {
     )
 }
 
-export default withRouter(Issue);
+export default Issue;
