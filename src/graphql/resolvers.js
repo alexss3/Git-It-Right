@@ -25,6 +25,7 @@ export const resolvers = {
                 });
                 return result.additionalUserInfo.username;
             } catch (error) {
+                console.error(error.message);
                 throw new Error(`Error: ${error.message}`);
             }
         },
