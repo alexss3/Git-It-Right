@@ -7,12 +7,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import NavbarContainer from '../../components/navbar/navbar.component';
+import Issues from '../../components/issues/issues.component';
 
 import { queries } from '../../graphql/queries';
 
 import { IssuesPageContainer } from './issues.styles';
 
-const IssuesPage = ({ match }) => {
+const IssuesPage = () => {
     return (
         <ApolloConsumer>
             {
@@ -26,7 +27,7 @@ const IssuesPage = ({ match }) => {
                             <Container>
                                 <Row>
                                     <Col>
-                                        <h1>You have some issues</h1>
+                                        <Issues token={data.accessToken} />
                                     </Col>
                                 </Row>
                             </Container>
