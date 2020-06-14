@@ -15,6 +15,13 @@ const NavbarContainer = ({ user, history, client }) => {
         <React.Fragment>
             <StyledNavbar>
                 <Navbar.Brand>
+                <img
+                    alt=""
+                    src="/git-it-right-logo.svg"
+                    width="30"
+                    height="30"
+                    className="d-inline-block align-top"
+                />{' '}
                     Git It Right
                 </Navbar.Brand>
                 <Nav className="mr-auto">
